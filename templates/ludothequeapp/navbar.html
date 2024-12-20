@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        @keyframes bounce {
+            0%, 100%{
+                transform: translate(0);
+            }
+            25%{
+                transform: translate(-20px);
+            }
+            75%{
+                transform: translate(20px);
+            }
+        }
+        header{
+            height: 90px;
+            background: linear-gradient(to left, #713C07, #BD650C);
+            font-family: monospace;
+            border-top: 1px solid #713C07;
+            border-bottom: 1px solid #713C07;
+        }
+        .div1{
+            position: absolute;
+            top: 13px;
+            left: 40px;
+            height: 66px;
+            box-shadow: 4px 4px 4px 2px #0f1147;
+        }
+        nav ul{
+            float: right;
+            margin-right: 25px;  
+            z-index: 1000; 
+        }
+        nav ul li{
+            display: inline-block;
+            line-height: 87px;
+            margin: 0 15px;
+        }
+        nav ul li a{
+            position: relative;
+            color: white;
+            font-size: 23px;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 16px;
+            border: 2px solid white;
+            border-radius: 7px;
+        }
+        label #btn, label #cancel{
+            color: #78ace7;
+            font-size: 39px;
+            float: right;
+            line-height: 90px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+        #check{
+            display: none;
+        }
+        nav ul li a:hover{
+            background-color: #5A3005;
+            border-radius: 7px;
+            
+            color: white;
+        }
+        @media (max-width:1100px){
+           label #btn{
+            display: block;
+            margin-right: 25px;
+           }
+           label #cancel{
+            display: none;
+            margin-right: 25px;
+           }
+           .div1{
+            position: absolute;
+            top: 13px;
+            left: 25px;
+            height: 66px;
+            }
+           ul{
+            position: fixed;
+            width: 100%;
+            height: 45vh;
+            background: linear-gradient(to right, #0047AB, #0d65d9);
+            top: 92px;
+            left: -100%;
+            text-align: center;
+            transition: all .5s;
+            
+           }
+           nav ul li{
+            display: block;
+            margin: 50px 0;
+            line-height: 30px;
+           }
+           nav ul li a{
+            font-size: 23px;
+            color: #78ace7;
+            font-weight: bold;
+            border-bottom: 2px solid #78ace7;
+           }
+           #check:checked ~ nav .menu{
+            left: 0;
+           }
+           #check:checked ~ label #btn{
+            display: none;
+           }
+           #check:checked ~ label #cancel{
+            display: block;
+           }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <h3 id="btn">Menu ></h3>
+            <h3 id="cancel">Menu X</h3>
+        </label>
+        <div class="div1">
+            <img src="{% static 'images/l.png' %}" alt="" width="190px" height="70px">
+        </div>
+        <nav>
+            <ul class="menu">
+                
+                <li><a href="{% url 'home2' %}">Acceuil</a></li>
+                <li><a href="{% url 'connexion'%}">Connexion</a></li>
+            </ul>
+        </nav>    
+        
+    </header>
+</body>
+</html>

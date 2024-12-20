@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Acceuil</title>
+    
+    <style>
+        @keyframes bounce {
+            0%, 100%{
+                transform: translate(0);
+            }
+            25%{
+                transform: translate(-20px);
+            }
+            75%{
+                transform: translate(20px);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+        *{
+            margin: 0;
+            color: rgb(48, 4, 4);
+            font-family: monospace;
+            font-size: 16px; /* Taille de police normale */
+            line-height: 1.5; /* Améliore la lisibilité avec un espacement vertical */
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            min-height: calc(100vh - 166px);
+        }
+        
+        .bar{
+            width: 47%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+            0 8px 16px rgba(0, 0, 0, 0.1);
+            animation: bounce 1s ease;
+        }
+        form{
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 5px;
+        }
+        label {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 13px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px;
+            margin: 7px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .cont{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        a{
+            color: white;
+        }
+        h1{
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        .btn{
+            background: red;
+        }
+        .btn:hover{
+            background: #ba0000;
+        }
+        
+        p{
+            background: red;
+            color: #fff;
+            padding: 5px;
+            border-radius: 6px;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        .pie{
+            width: 47%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+            0 8px 16px rgba(0, 0, 0, 0.1);
+            animation: bounce 1s ease;
+        }
+        @media (max-width:1100px){
+            table {
+                width: 90%;
+                border-collapse: collapse;
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+            .pie{
+                width: 100%;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+            .bar{
+                width: 100%;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'ludothequeapp/navbar1.html' %}
+    <div class="container">
+    <div class="cont">
+
+        <table id="tableList">
+            <thead>
+                <tr>
+                    <th>Nom de la piéce</th>
+                    <th>Présence</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in nbr %}
+                <tr>
+                    <td>{{ b.nom }}</td>
+                    {% if b.presente %}
+                        <td>Oui</td>
+                    {% else %}
+                        <td>Non</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+        
+        
+    </div>   
+</div>
+    {% include 'ludothequeapp/footer.html' %}
+</body>
+</html>

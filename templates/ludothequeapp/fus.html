@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Acceuil</title>
+    
+    <style>
+        @keyframes bounce {
+            0%, 100%{
+                transform: translate(0);
+            }
+            25%{
+                transform: translate(-20px);
+            }
+            75%{
+                transform: translate(20px);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+        *{
+            margin: 0;
+            color: rgb(48, 4, 4);
+            font-family: monospace;
+            font-size: 16px; /* Taille de police normale */
+            line-height: 1.5; /* Améliore la lisibilité avec un espacement vertical */
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            min-height: calc(100vh - 166px);
+        }
+        
+        .bar{
+            width: 47%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+            0 8px 16px rgba(0, 0, 0, 0.1);
+            animation: bounce 1s ease;
+        }
+        .cont{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .igm{
+                width: 65%;
+        }
+        p{
+            background: red;
+            color: #fff;
+            padding: 5px;
+            border-radius: 6px;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        .btn{
+            background: red;
+            padding: 10px;
+            margin: 7px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 25px;
+            text-align: center;
+        }
+        h1{
+            font-family: monospace;
+            font-size: 22px;
+            text-transform: uppercase;
+        }
+        .btn:hover{
+            background: #ba0000;
+        }
+        .pie{
+            width: 47%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+            0 8px 16px rgba(0, 0, 0, 0.1);
+            animation: bounce 1s ease;
+        }
+        @media (max-width:1100px){
+            table {
+                width: 90%;
+                border-collapse: collapse;
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+            .pie{
+                width: 100%;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+            .bar{
+                width: 100%;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+            .igm{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'ludothequeapp/navbar4.html' %}
+    <div class="container">
+    <div class="cont">
+        <form action="{% url 'fus' %}" method="POST">
+            {% csrf_token %}
+            {% if msg %}
+                <p>{{msg}}</p>
+            {% endif %} 
+            <label for="ex1">Exemplaire 1 :</label>
+            <select id="ex1" name="ex1">
+                {% for i in a %}
+                <option value="{{ i.id }}">{{ i.nom }}</option>
+                {% endfor %} 
+            </select>
+            <label for="ex2">Exemplaire 2 :</label>
+            <select id="ex2" name="ex2">
+                {% for i in a %}
+                <option value="{{ i.id }}">{{ i.nom }}</option>
+                {% endfor %} 
+            </select>
+            <button type="submit" id="desac">Fussionner</button>
+            <br>
+            
+        </form>
+    </div>  
+</div>
+{% include 'ludothequeapp/footer.html' %}
+</body>
+</html>
